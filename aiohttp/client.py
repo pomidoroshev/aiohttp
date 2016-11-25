@@ -213,6 +213,8 @@ class ClientSession:
                                        "but response lacks a Location "
                                        "or URI HTTP header".format(resp))
                 r_url = URL(r_url)
+                if not r_url.host:
+                    r_url = URL(str(r_url))
 
                 scheme = r_url.scheme
                 if scheme not in ('http', 'https', ''):
